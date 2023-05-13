@@ -51,6 +51,7 @@ class AccountsBloc extends Bloc<AccountsEvent, AccountsState> {
   ) async {
     final accounts = await accountsRepository.loadAccounts();
     final selectedAccountAddress = _selectedAccountManager.selectedAddress;
+
     assert(accounts.isNotEmpty && selectedAccountAddress != null ||
         (accounts.isEmpty && selectedAccountAddress == null));
 

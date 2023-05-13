@@ -11,45 +11,50 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i8;
-import 'package:flutter/material.dart' as _i9;
+import 'package:auto_route/auto_route.dart' as _i10;
+import 'package:flutter/material.dart' as _i11;
+import 'package:wallet/domain/balances/entities/balance.dart' as _i12;
 import 'package:wallet/presentation/airdrop/screens/airdrop_screen.dart' as _i6;
 import 'package:wallet/presentation/home/screens/home.dart' as _i3;
 import 'package:wallet/presentation/receive/screens/receive.dart' as _i5;
 import 'package:wallet/presentation/scan/scan_screen.dart' as _i7;
+import 'package:wallet/presentation/send_coin/screens/send_by_qr_screen.dart'
+    as _i9;
+import 'package:wallet/presentation/send_coin/screens/send_coin_screen.dart'
+    as _i8;
 import 'package:wallet/presentation/setup_wallet/screens/seed_phrase_screen.dart'
     as _i4;
 import 'package:wallet/presentation/setup_wallet/screens/setup_wallet_screen.dart'
     as _i2;
 import 'package:wallet/presentation/splash/screens/splash_screen.dart' as _i1;
 
-class AppRouter extends _i8.RootStackRouter {
-  AppRouter([_i9.GlobalKey<_i9.NavigatorState>? navigatorKey])
+class AppRouter extends _i10.RootStackRouter {
+  AppRouter([_i11.GlobalKey<_i11.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i8.PageFactory> pagesMap = {
+  final Map<String, _i10.PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
-      return _i8.AdaptivePage<dynamic>(
+      return _i10.AdaptivePage<dynamic>(
         routeData: routeData,
         child: const _i1.SplashScreen(),
       );
     },
     SetupWalletRoute.name: (routeData) {
-      return _i8.AdaptivePage<dynamic>(
+      return _i10.AdaptivePage<dynamic>(
         routeData: routeData,
         child: const _i2.SetupWalletScreen(),
       );
     },
     HomeRoute.name: (routeData) {
-      return _i8.AdaptivePage<dynamic>(
+      return _i10.AdaptivePage<dynamic>(
         routeData: routeData,
         child: const _i3.HomeScreen(),
       );
     },
     SeedPhraseRoute.name: (routeData) {
       final args = routeData.argsAs<SeedPhraseRouteArgs>();
-      return _i8.AdaptivePage<dynamic>(
+      return _i10.AdaptivePage<dynamic>(
         routeData: routeData,
         child: _i4.SeedPhraseScreen(
           key: args.key,
@@ -58,14 +63,14 @@ class AppRouter extends _i8.RootStackRouter {
       );
     },
     ReceiveRoute.name: (routeData) {
-      return _i8.AdaptivePage<dynamic>(
+      return _i10.AdaptivePage<dynamic>(
         routeData: routeData,
         child: const _i5.ReceiveScreen(),
       );
     },
     AirdropRoute.name: (routeData) {
       final args = routeData.argsAs<AirdropRouteArgs>();
-      return _i8.AdaptivePage<dynamic>(
+      return _i10.AdaptivePage<dynamic>(
         routeData: routeData,
         child: _i6.AirdropScreen(
           key: args.key,
@@ -76,7 +81,7 @@ class AppRouter extends _i8.RootStackRouter {
     ScanQrRoute.name: (routeData) {
       final args = routeData.argsAs<ScanQrRouteArgs>(
           orElse: () => const ScanQrRouteArgs());
-      return _i8.AdaptivePage<dynamic>(
+      return _i10.AdaptivePage<String?>(
         routeData: routeData,
         child: _i7.ScanQrScreen(
           isForAddress: args.isForAddress,
@@ -84,44 +89,73 @@ class AppRouter extends _i8.RootStackRouter {
         ),
       );
     },
+    SendCoinRoute.name: (routeData) {
+      final args = routeData.argsAs<SendCoinRouteArgs>();
+      return _i10.AdaptivePage<dynamic>(
+        routeData: routeData,
+        child: _i8.SendCoinScreen(
+          key: args.key,
+          tokenBalance: args.tokenBalance,
+        ),
+      );
+    },
+    SendByQRRoute.name: (routeData) {
+      final args = routeData.argsAs<SendByQRRouteArgs>();
+      return _i10.AdaptivePage<dynamic>(
+        routeData: routeData,
+        child: _i9.SendByQRScreen(
+          amount: args.amount,
+          senderAddress: args.senderAddress,
+          key: args.key,
+        ),
+      );
+    },
   };
 
   @override
-  List<_i8.RouteConfig> get routes => [
-        _i8.RouteConfig(
+  List<_i10.RouteConfig> get routes => [
+        _i10.RouteConfig(
           SplashRoute.name,
           path: '/',
         ),
-        _i8.RouteConfig(
+        _i10.RouteConfig(
           SetupWalletRoute.name,
           path: '/setup-wallet-screen',
         ),
-        _i8.RouteConfig(
+        _i10.RouteConfig(
           HomeRoute.name,
           path: '/home-screen',
         ),
-        _i8.RouteConfig(
+        _i10.RouteConfig(
           SeedPhraseRoute.name,
           path: '/seed-phrase-screen',
         ),
-        _i8.RouteConfig(
+        _i10.RouteConfig(
           ReceiveRoute.name,
           path: '/receive-screen',
         ),
-        _i8.RouteConfig(
+        _i10.RouteConfig(
           AirdropRoute.name,
           path: '/airdrop-screen',
         ),
-        _i8.RouteConfig(
+        _i10.RouteConfig(
           ScanQrRoute.name,
           path: '/scan-qr-screen',
+        ),
+        _i10.RouteConfig(
+          SendCoinRoute.name,
+          path: '/send-coin-screen',
+        ),
+        _i10.RouteConfig(
+          SendByQRRoute.name,
+          path: '/send-by-qr-screen',
         ),
       ];
 }
 
 /// generated route for
 /// [_i1.SplashScreen]
-class SplashRoute extends _i8.PageRouteInfo<void> {
+class SplashRoute extends _i10.PageRouteInfo<void> {
   const SplashRoute()
       : super(
           SplashRoute.name,
@@ -133,7 +167,7 @@ class SplashRoute extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.SetupWalletScreen]
-class SetupWalletRoute extends _i8.PageRouteInfo<void> {
+class SetupWalletRoute extends _i10.PageRouteInfo<void> {
   const SetupWalletRoute()
       : super(
           SetupWalletRoute.name,
@@ -145,7 +179,7 @@ class SetupWalletRoute extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.HomeScreen]
-class HomeRoute extends _i8.PageRouteInfo<void> {
+class HomeRoute extends _i10.PageRouteInfo<void> {
   const HomeRoute()
       : super(
           HomeRoute.name,
@@ -157,10 +191,10 @@ class HomeRoute extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.SeedPhraseScreen]
-class SeedPhraseRoute extends _i8.PageRouteInfo<SeedPhraseRouteArgs> {
+class SeedPhraseRoute extends _i10.PageRouteInfo<SeedPhraseRouteArgs> {
   SeedPhraseRoute({
-    _i9.Key? key,
-    required _i9.BuildContext blocContext,
+    _i11.Key? key,
+    required _i11.BuildContext blocContext,
   }) : super(
           SeedPhraseRoute.name,
           path: '/seed-phrase-screen',
@@ -179,9 +213,9 @@ class SeedPhraseRouteArgs {
     required this.blocContext,
   });
 
-  final _i9.Key? key;
+  final _i11.Key? key;
 
-  final _i9.BuildContext blocContext;
+  final _i11.BuildContext blocContext;
 
   @override
   String toString() {
@@ -191,7 +225,7 @@ class SeedPhraseRouteArgs {
 
 /// generated route for
 /// [_i5.ReceiveScreen]
-class ReceiveRoute extends _i8.PageRouteInfo<void> {
+class ReceiveRoute extends _i10.PageRouteInfo<void> {
   const ReceiveRoute()
       : super(
           ReceiveRoute.name,
@@ -203,9 +237,9 @@ class ReceiveRoute extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.AirdropScreen]
-class AirdropRoute extends _i8.PageRouteInfo<AirdropRouteArgs> {
+class AirdropRoute extends _i10.PageRouteInfo<AirdropRouteArgs> {
   AirdropRoute({
-    _i9.Key? key,
+    _i11.Key? key,
     required String address,
   }) : super(
           AirdropRoute.name,
@@ -225,7 +259,7 @@ class AirdropRouteArgs {
     required this.address,
   });
 
-  final _i9.Key? key;
+  final _i11.Key? key;
 
   final String address;
 
@@ -237,10 +271,10 @@ class AirdropRouteArgs {
 
 /// generated route for
 /// [_i7.ScanQrScreen]
-class ScanQrRoute extends _i8.PageRouteInfo<ScanQrRouteArgs> {
+class ScanQrRoute extends _i10.PageRouteInfo<ScanQrRouteArgs> {
   ScanQrRoute({
     bool isForAddress = false,
-    _i9.Key? key,
+    _i11.Key? key,
   }) : super(
           ScanQrRoute.name,
           path: '/scan-qr-screen',
@@ -261,10 +295,83 @@ class ScanQrRouteArgs {
 
   final bool isForAddress;
 
-  final _i9.Key? key;
+  final _i11.Key? key;
 
   @override
   String toString() {
     return 'ScanQrRouteArgs{isForAddress: $isForAddress, key: $key}';
+  }
+}
+
+/// generated route for
+/// [_i8.SendCoinScreen]
+class SendCoinRoute extends _i10.PageRouteInfo<SendCoinRouteArgs> {
+  SendCoinRoute({
+    _i11.Key? key,
+    required _i12.TokenBalance tokenBalance,
+  }) : super(
+          SendCoinRoute.name,
+          path: '/send-coin-screen',
+          args: SendCoinRouteArgs(
+            key: key,
+            tokenBalance: tokenBalance,
+          ),
+        );
+
+  static const String name = 'SendCoinRoute';
+}
+
+class SendCoinRouteArgs {
+  const SendCoinRouteArgs({
+    this.key,
+    required this.tokenBalance,
+  });
+
+  final _i11.Key? key;
+
+  final _i12.TokenBalance tokenBalance;
+
+  @override
+  String toString() {
+    return 'SendCoinRouteArgs{key: $key, tokenBalance: $tokenBalance}';
+  }
+}
+
+/// generated route for
+/// [_i9.SendByQRScreen]
+class SendByQRRoute extends _i10.PageRouteInfo<SendByQRRouteArgs> {
+  SendByQRRoute({
+    required double amount,
+    required String senderAddress,
+    _i11.Key? key,
+  }) : super(
+          SendByQRRoute.name,
+          path: '/send-by-qr-screen',
+          args: SendByQRRouteArgs(
+            amount: amount,
+            senderAddress: senderAddress,
+            key: key,
+          ),
+        );
+
+  static const String name = 'SendByQRRoute';
+}
+
+class SendByQRRouteArgs {
+  const SendByQRRouteArgs({
+    required this.amount,
+    required this.senderAddress,
+    this.key,
+  });
+
+  final double amount;
+
+  final String senderAddress;
+
+  final _i11.Key? key;
+
+  @override
+  String toString() {
+    return 'SendByQRRouteArgs{amount: $amount, senderAddress: $senderAddress, key: $key}';
   }
 }

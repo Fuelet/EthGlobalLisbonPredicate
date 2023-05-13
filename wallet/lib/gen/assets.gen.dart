@@ -35,6 +35,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ethereum_dark.svg
   String get ethereumDark => 'assets/icons/ethereum_dark.svg';
 
+  /// File path: assets/icons/eye.svg
+  String get eye => 'assets/icons/eye.svg';
+
   /// File path: assets/icons/fuel_dark.svg
   String get fuelDark => 'assets/icons/fuel_dark.svg';
 
@@ -53,6 +56,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/scan.svg
   String get scan => 'assets/icons/scan.svg';
 
+  /// File path: assets/icons/share.svg
+  String get share => 'assets/icons/share.svg';
+
   /// List of all assets
   List<String> get values => [
         add,
@@ -62,13 +68,25 @@ class $AssetsIconsGen {
         copy,
         done,
         ethereumDark,
+        eye,
         fuelDark,
         import,
         info,
         more,
         plus,
-        scan
+        scan,
+        share
       ];
+}
+
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
+
+  /// File path: assets/images/eth_qr.png
+  AssetGenImage get ethQr => const AssetGenImage('assets/images/eth_qr.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [ethQr];
 }
 
 class $AssetsIconsArrowsGen {
@@ -107,6 +125,7 @@ class Assets {
   Assets._();
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
+  static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
 class AssetGenImage {

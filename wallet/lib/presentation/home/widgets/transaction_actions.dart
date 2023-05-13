@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:auto_route/auto_route.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:wallet/application/accounts/accounts_bloc.dart';
+import 'package:wallet/application/balances/balances_bloc/balances_bloc.dart';
 import 'package:wallet/gen/assets.gen.dart';
 import 'package:wallet/presentation/core/constants/colors.dart';
 import 'package:wallet/presentation/core/routes/router.gr.dart';
@@ -31,7 +34,6 @@ class TransactionActions extends StatelessWidget {
   }
 
   Future<void> _handleScan(BuildContext context) async {
-    print("Gonna scan");
     final value = await context.router.push<String?>(
       ScanQrRoute(isForAddress: true),
     );
@@ -40,76 +42,60 @@ class TransactionActions extends StatelessWidget {
       return;
     }
 
+    try {
+      Map<String, dynamic> data = jsonDecode(value);
+
+      final double amount = data["amount"];
+      final double senderAddress = data["amsender_addressount"];
+
+      //TODO : get and pass data to [ReceiveRoute]
+
+      context.router.push(
+        const ReceiveRoute(),
+      );
+    } catch (e) {
+      print(e);
+    }
+
+    Map<String, dynamic> data = jsonDecode(value);
+
     context.router.push(
       const ReceiveRoute(),
     );
   }
 
+  void _handleSendByQR(BuildContext context) {
+    if (context.read<BalancesBloc>().state.balances.isNotEmpty) {
+      context.router.push(
+        SendCoinRoute(
+            tokenBalance: context.read<BalancesBloc>().state.balances.first),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    // final balancesState = context.read<BalancesBloc>().state;
-
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Expanded(
           child: FLTMonocoloredPrimaryButton(
-            onPressed: () => _handleScan(context),
-            // onPressed: () => DemoModeUtils.checkAndDo(
-            //   accounts: context.read<AccountsBloc>().state.accounts,
-            //   context: context,
-            //   callback: () async {
-            //     // ConnectionRequestBottomSheet.show(context);
-            //     // return;
-            //     if (assetId == null) {
-            //       /// From [HomeScreen]
-            //       if (balancesState.balances.length == 1) {
-            //         context.router.push(
-            //           SendCoinRoute(
-            //             tokenBalance: balancesState.balances.first,
-            //           ),
-            //         );
-            //       } else {
-            //         SelectTokenBottomSheet.show(
-            //           context,
-            //           onSelectTokenBalance: (tokenBalance) {
-            //             context.router.push(
-            //               SendCoinRoute(
-            //                 tokenBalance: tokenBalance,
-            //               ),
-            //             );
-            //           },
-            //         );
-            //       }
-            //     } else {
-            //       /// From [CoinScreen], we already know which token to send, no needs to show [SelectTokenBottomSheet]
-            //       context.router.push(
-            //         SendCoinRoute(
-            //           tokenBalance: context
-            //               .read<BalancesBloc>()
-            //               .state
-            //               .balances
-            //               .firstWhere(
-            //                 (e) => e.asset == assetId,
-            //               ),
-            //         ),
-            //       );
-            //     }
-            //   },
-            // ),
             size: ButtonSize.xsmall,
             text: "Send by QR",
             prefixIcon: SvgPicture.asset(
               Assets.icons.arrows.arrowUp,
               color: FLTColors.charlestonGreen2F,
             ),
+            onPressed: () {
+              _handleSendByQR(context);
+            },
           ),
         ),
         const SizedBox(width: 9),
         Expanded(
           child: FLTMonocoloredSecondaryButton(
             size: ButtonSize.xsmall,
-            onPressed: () {},
+            onPressed: () => _handleScan(context),
             text: "Scan QR",
             prefixIcon: SvgPicture.asset(Assets.icons.scan),
           ),

@@ -90,7 +90,7 @@ class SetupWalletScreen extends StatelessWidget {
             child: FLTMonocoloredSecondaryButton(
               onPressed: () {},
               size: ButtonSize.large,
-              text: "Track any wallet", // TODO: intl
+              text: "Import existing wallet",
               prefixIcon: SvgPicture.asset(Assets.icons.import),
             ),
           ),
