@@ -5,6 +5,7 @@ import 'package:wallet/gen/assets.gen.dart';
 import 'package:wallet/presentation/core/constants/colors.dart';
 import 'package:wallet/presentation/core/constants/typography.dart';
 import 'package:wallet/presentation/core/widgets/app_bar.dart';
+import 'package:wallet/presentation/core/widgets/icon_button.dart';
 import 'package:wallet/presentation/core/widgets/scaffold.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
@@ -37,9 +38,18 @@ class _ScanQrScreenState extends State<ScanQrScreen> {
 
     return FLTScaffold(
       extendBodyBehindAppBar: true,
-      appBar: const FLTAppBar(
-        title: Text(
+      appBar: FLTAppBar(
+        title: const Text(
           'Scan',
+        ),
+        leading: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          child: FLTIconButton(
+            onTap: () => context.router.pop(null),
+            icon: SvgPicture.asset(
+              Assets.icons.arrows.iosArrowBack,
+            ),
+          ),
         ),
       ),
       body: Stack(
@@ -52,7 +62,7 @@ class _ScanQrScreenState extends State<ScanQrScreen> {
               });
               Future.delayed(
                 const Duration(seconds: 1),
-                () => context.router.pop(barcode.rawValue),
+                    () => context.router.pop(barcode.rawValue),
               );
             },
           ),

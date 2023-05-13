@@ -105,14 +105,14 @@ class SendByQRScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(10),
                   backgroundColor: Colors.white,
                   version: QrVersions.auto,
-                  embeddedImage: AssetImage(
-                    Assets.images.ethQr.path,
-                  ),
-                  embeddedImageStyle: QrEmbeddedImageStyle(
-                    size: Size.square(
-                      MediaQuery.of(context).size.height / 10,
-                    ),
-                  ),
+                  // embeddedImage: AssetImage(
+                  //   Assets.images.ethQr.path,
+                  // ),
+                  // embeddedImageStyle: QrEmbeddedImageStyle(
+                  //   size: Size.square(
+                  //     MediaQuery.of(context).size.height / 10,
+                  //   ),
+                  // ),
                 ),
               ),
             ),
