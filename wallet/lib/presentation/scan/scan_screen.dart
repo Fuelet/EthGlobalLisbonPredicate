@@ -96,7 +96,7 @@ class _ScanQrScreenState extends State<ScanQrScreen> {
                   ),
                   const SizedBox(height: 17),
                   Text(
-                    'Scan FUEL address',
+                    'Scan secret QR code',
                     style: FLTTypography.header6SemiBold.copyWith(
                       color: Colors.white.withOpacity(.7),
                     ),

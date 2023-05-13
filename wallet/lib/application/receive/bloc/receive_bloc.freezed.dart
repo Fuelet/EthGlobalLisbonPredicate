@@ -17,20 +17,20 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ReceiveEvent {
   double get amount => throw _privateConstructorUsedError;
-  String get private => throw _privateConstructorUsedError;
+  String get secret => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double amount, String private) receive,
+    required TResult Function(double amount, String secret) receive,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(double amount, String private)? receive,
+    TResult? Function(double amount, String secret)? receive,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double amount, String private)? receive,
+    TResult Function(double amount, String secret)? receive,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,7 +62,7 @@ abstract class $ReceiveEventCopyWith<$Res> {
           ReceiveEvent value, $Res Function(ReceiveEvent) then) =
       _$ReceiveEventCopyWithImpl<$Res, ReceiveEvent>;
   @useResult
-  $Res call({double amount, String private});
+  $Res call({double amount, String secret});
 }
 
 /// @nodoc
@@ -79,16 +79,16 @@ class _$ReceiveEventCopyWithImpl<$Res, $Val extends ReceiveEvent>
   @override
   $Res call({
     Object? amount = null,
-    Object? private = null,
+    Object? secret = null,
   }) {
     return _then(_value.copyWith(
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as double,
-      private: null == private
-          ? _value.private
-          : private // ignore: cast_nullable_to_non_nullable
+      secret: null == secret
+          ? _value.secret
+          : secret // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -102,7 +102,7 @@ abstract class _$$_ReceiveCopyWith<$Res>
       __$$_ReceiveCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({double amount, String private});
+  $Res call({double amount, String secret});
 }
 
 /// @nodoc
@@ -116,16 +116,16 @@ class __$$_ReceiveCopyWithImpl<$Res>
   @override
   $Res call({
     Object? amount = null,
-    Object? private = null,
+    Object? secret = null,
   }) {
     return _then(_$_Receive(
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as double,
-      private: null == private
-          ? _value.private
-          : private // ignore: cast_nullable_to_non_nullable
+      secret: null == secret
+          ? _value.secret
+          : secret // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -134,16 +134,16 @@ class __$$_ReceiveCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Receive implements _Receive {
-  const _$_Receive({required this.amount, required this.private});
+  const _$_Receive({required this.amount, required this.secret});
 
   @override
   final double amount;
   @override
-  final String private;
+  final String secret;
 
   @override
   String toString() {
-    return 'ReceiveEvent.receive(amount: $amount, private: $private)';
+    return 'ReceiveEvent.receive(amount: $amount, secret: $secret)';
   }
 
   @override
@@ -152,11 +152,11 @@ class _$_Receive implements _Receive {
         (other.runtimeType == runtimeType &&
             other is _$_Receive &&
             (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.private, private) || other.private == private));
+            (identical(other.secret, secret) || other.secret == secret));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, amount, private);
+  int get hashCode => Object.hash(runtimeType, amount, secret);
 
   @JsonKey(ignore: true)
   @override
@@ -167,27 +167,27 @@ class _$_Receive implements _Receive {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double amount, String private) receive,
+    required TResult Function(double amount, String secret) receive,
   }) {
-    return receive(amount, private);
+    return receive(amount, secret);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(double amount, String private)? receive,
+    TResult? Function(double amount, String secret)? receive,
   }) {
-    return receive?.call(amount, private);
+    return receive?.call(amount, secret);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double amount, String private)? receive,
+    TResult Function(double amount, String secret)? receive,
     required TResult orElse(),
   }) {
     if (receive != null) {
-      return receive(amount, private);
+      return receive(amount, secret);
     }
     return orElse();
   }
@@ -224,12 +224,12 @@ class _$_Receive implements _Receive {
 abstract class _Receive implements ReceiveEvent {
   const factory _Receive(
       {required final double amount,
-      required final String private}) = _$_Receive;
+      required final String secret}) = _$_Receive;
 
   @override
   double get amount;
   @override
-  String get private;
+  String get secret;
   @override
   @JsonKey(ignore: true)
   _$$_ReceiveCopyWith<_$_Receive> get copyWith =>

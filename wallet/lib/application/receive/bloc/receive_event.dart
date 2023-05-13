@@ -4,6 +4,6 @@ part of 'receive_bloc.dart';
 class ReceiveEvent with _$ReceiveEvent {
   const factory ReceiveEvent.receive({
     required double amount,
-    required String private,
+    required String secret,
   }) = _Receive;
 }

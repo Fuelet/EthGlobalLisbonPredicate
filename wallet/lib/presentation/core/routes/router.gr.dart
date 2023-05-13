@@ -65,9 +65,15 @@ class AppRouter extends _i10.RootStackRouter {
       );
     },
     ReceiveRoute.name: (routeData) {
+      final args = routeData.argsAs<ReceiveRouteArgs>();
       return _i10.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i5.ReceiveScreen(),
+        child: _i5.ReceiveScreen(
+          key: args.key,
+          amount: args.amount,
+          senderAddress: args.senderAddress,
+          secret: args.secret,
+        ),
       );
     },
     AirdropRoute.name: (routeData) {
@@ -229,14 +235,46 @@ class SeedPhraseRouteArgs {
 
 /// generated route for
 /// [_i5.ReceiveScreen]
-class ReceiveRoute extends _i10.PageRouteInfo<void> {
-  const ReceiveRoute()
-      : super(
+class ReceiveRoute extends _i10.PageRouteInfo<ReceiveRouteArgs> {
+  ReceiveRoute({
+    _i11.Key? key,
+    required double amount,
+    required String senderAddress,
+    required String secret,
+  }) : super(
           ReceiveRoute.name,
           path: '/receive-screen',
+          args: ReceiveRouteArgs(
+            key: key,
+            amount: amount,
+            senderAddress: senderAddress,
+            secret: secret,
+          ),
         );
 
   static const String name = 'ReceiveRoute';
+}
+
+class ReceiveRouteArgs {
+  const ReceiveRouteArgs({
+    this.key,
+    required this.amount,
+    required this.senderAddress,
+    required this.secret,
+  });
+
+  final _i11.Key? key;
+
+  final double amount;
+
+  final String senderAddress;
+
+  final String secret;
+
+  @override
+  String toString() {
+    return 'ReceiveRouteArgs{key: $key, amount: $amount, senderAddress: $senderAddress, secret: $secret}';
+  }
 }
 
 /// generated route for

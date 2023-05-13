@@ -45,22 +45,17 @@ class TransactionActions extends StatelessWidget {
       Map<String, dynamic> data = jsonDecode(value);
 
       final double amount = data["amount"];
-      final double senderAddress = data["amsender_addressount"];
+      final String senderAddress = data["sender_address"];
+      final String secret = data["secret"];
 
       //TODO : get and pass data to [ReceiveRoute]
 
       context.router.push(
-        const ReceiveRoute(),
+        ReceiveRoute(amount: amount, senderAddress: senderAddress, secret: secret),
       );
     } catch (e) {
       print(e);
     }
-
-    Map<String, dynamic> data = jsonDecode(value);
-
-    context.router.push(
-      const ReceiveRoute(),
-    );
   }
 
   void _handleSendByQR(BuildContext context) {

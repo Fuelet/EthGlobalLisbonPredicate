@@ -16,7 +16,15 @@ import 'package:wallet/presentation/receive/widgets/receiving_coin_icon.dart';
 import 'package:wallet/presentation/receive/widgets/view_transaction_text_button.dart';
 
 class ReceiveScreen extends StatelessWidget {
-  const ReceiveScreen({super.key});
+  final double amount;
+  final String senderAddress;
+  final String secret;
+
+  const ReceiveScreen(
+      {super.key,
+      required this.amount,
+      required this.senderAddress,
+      required this.secret});
 
   void _handleClose(BuildContext context) {
     context.router.pop();
@@ -24,10 +32,6 @@ class ReceiveScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const senderAddress = "hardcodedaddress";
-    const amount = 0.5;
-    const senderPrivate = 'senderPrivate';
-
     return BlocProvider(
       create: (context) => locator.receiveBloc,
       child: BlocBuilder<ReceiveBloc, ReceiveState>(
@@ -82,9 +86,9 @@ class ReceiveScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: ProcessingTransactionDetails(
-                    receiverAddress: senderAddress,
+                    receiverAddress: 'your wallet',
                     status: state.toTransactionStatus(),
-                    coinAmount: 0.5,
+                    coinAmount: amount,
                   ),
                 ),
                 state.maybeMap(
@@ -106,9 +110,9 @@ class ReceiveScreen extends StatelessWidget {
                       child: FLTMonocoloredPrimaryButton(
                         onPressed: () {
                           context.read<ReceiveBloc>().add(
-                                const ReceiveEvent.receive(
-                                  private: senderPrivate,
+                                ReceiveEvent.receive(
                                   amount: amount,
+                                  secret: secret
                                 ),
                               );
                         },
