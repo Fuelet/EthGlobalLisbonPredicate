@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wallet/application/accounts/account_select/account_select_bloc.dart';
 import 'package:wallet/application/accounts/accounts_bloc.dart';
 import 'package:wallet/di/locator.dart';
+import 'package:wallet/presentation/core/constants/colors.dart';
 import 'package:wallet/presentation/core/routes/router.gr.dart';
+import 'package:overlay_support/overlay_support.dart';
 
 class FuelWalletApp extends StatelessWidget {
   FuelWalletApp({super.key});
@@ -25,11 +27,20 @@ class FuelWalletApp extends StatelessWidget {
           create: (context) => locator.accountSelectBloc,
         ),
       ],
-      child: MaterialApp.router(
-        title: 'Fuelet',
-        debugShowCheckedModeBanner: false,
-        routerDelegate: _appRouter.delegate(),
-        routeInformationParser: _appRouter.defaultRouteParser(),
+      child: OverlaySupport.global(
+        child: OverlaySupportTheme(
+          toastTheme: ToastThemeData(
+            alignment: Alignment.bottomCenter,
+            background: FLTColors.charlestonGreen2F,
+            textColor: Colors.white,
+          ),
+          child: MaterialApp.router(
+            title: 'Fuelet',
+            debugShowCheckedModeBanner: false,
+            routerDelegate: _appRouter.delegate(),
+            routeInformationParser: _appRouter.defaultRouteParser(),
+          ),
+        ),
       ),
     );
   }

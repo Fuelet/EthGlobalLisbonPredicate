@@ -1,12 +1,16 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wallet/application/accounts/account_select/account_select_bloc.dart';
 import 'package:wallet/application/accounts/accounts_bloc.dart';
 import 'package:wallet/application/create_wallet/create_account/create_account_bloc.dart';
 import 'package:wallet/application/create_wallet/seed_phrase/seed_phrase_bloc.dart';
+import 'package:wallet/core/managers/clipboard.dart';
 import 'package:wallet/di/locator.dart';
 import 'package:wallet/presentation/core/constants/colors.dart';
 import 'package:wallet/presentation/core/constants/typography.dart';
+import 'package:wallet/presentation/core/managers/toast_manager.dart';
+import 'package:wallet/presentation/core/routes/router.gr.dart';
 import 'package:wallet/presentation/core/widgets/app_bar.dart';
 import 'package:wallet/presentation/core/widgets/buttons/button_size.dart';
 import 'package:wallet/presentation/core/widgets/buttons/primary_button.dart';
@@ -65,7 +69,18 @@ class SeedPhraseScreen extends StatelessWidget {
                           );
                     },
                   ),
-                  // !!
+                  BlocListener<AccountSelectBloc, AccountSelectState>(
+                    listener: (context, state) {
+                      state.mapOrNull(
+                        accountSelected: (_) {
+                          context.router.pushAndPopUntil(
+                            const HomeRoute(),
+                            predicate: (_) => false,
+                          );
+                        },
+                      );
+                    },
+                  ),
                 ],
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -92,12 +107,12 @@ class SeedPhraseScreen extends StatelessWidget {
                           onPressed: () {
                             final phrase = (state as Generated).phrase;
 
-                            // ClipboardManager.copyToBuffer(
-                            //   phrase.join(' '),
-                            //   onSuccess: () => ToastManager.showToast(
-                            //     '${L10n.of(context).copied}!',
-                            //   ),
-                            // );
+                            ClipboardManager.copyToBuffer(
+                              phrase.join(' '),
+                              onSuccess: () => ToastManager.showToast(
+                                'Copied!',
+                              ),
+                            );
                           },
                           hasInfiniteWidth: false,
                           size: ButtonSize.small,

@@ -27,7 +27,6 @@ enum TransactionStatus {
         return 'Failed';
       case TransactionStatus.succeed:
         return 'Successfull';
-        ;
       case TransactionStatus.inProgress:
         return 'In progress';
       case TransactionStatus.summary:

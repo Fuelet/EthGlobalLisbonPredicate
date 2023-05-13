@@ -15,6 +15,11 @@ class $AssetsIconsGen {
   /// File path: assets/icons/add.svg
   String get add => 'assets/icons/add.svg';
 
+  $AssetsIconsArrowsGen get arrows => const $AssetsIconsArrowsGen();
+
+  /// File path: assets/icons/check.svg
+  String get check => 'assets/icons/check.svg';
+
   /// File path: assets/icons/close.svg
   String get close => 'assets/icons/close.svg';
 
@@ -36,9 +41,62 @@ class $AssetsIconsGen {
   /// File path: assets/icons/info.svg
   String get info => 'assets/icons/info.svg';
 
+  /// File path: assets/icons/more.svg
+  String get more => 'assets/icons/more.svg';
+
+  /// File path: assets/icons/plus.svg
+  String get plus => 'assets/icons/plus.svg';
+
+  /// File path: assets/icons/scan.svg
+  String get scan => 'assets/icons/scan.svg';
+
   /// List of all assets
-  List<String> get values =>
-      [add, close, convert, copy, done, ethereumDark, import, info];
+  List<String> get values => [
+        add,
+        check,
+        close,
+        convert,
+        copy,
+        done,
+        ethereumDark,
+        import,
+        info,
+        more,
+        plus,
+        scan
+      ];
+}
+
+class $AssetsIconsArrowsGen {
+  const $AssetsIconsArrowsGen();
+
+  /// File path: assets/icons/arrows/arrow_down.svg
+  String get arrowDown => 'assets/icons/arrows/arrow_down.svg';
+
+  /// File path: assets/icons/arrows/arrow_up.svg
+  String get arrowUp => 'assets/icons/arrows/arrow_up.svg';
+
+  /// File path: assets/icons/arrows/ios_arrow_back.svg
+  String get iosArrowBack => 'assets/icons/arrows/ios_arrow_back.svg';
+
+  /// File path: assets/icons/arrows/ios_arrow_forward.svg
+  String get iosArrowForward => 'assets/icons/arrows/ios_arrow_forward.svg';
+
+  /// File path: assets/icons/arrows/open_link_arrow.svg
+  String get openLinkArrow => 'assets/icons/arrows/open_link_arrow.svg';
+
+  /// File path: assets/icons/arrows/triangle_arrow_down.svg
+  String get triangleArrowDown => 'assets/icons/arrows/triangle_arrow_down.svg';
+
+  /// List of all assets
+  List<String> get values => [
+        arrowDown,
+        arrowUp,
+        iosArrowBack,
+        iosArrowForward,
+        openLinkArrow,
+        triangleArrowDown
+      ];
 }
 
 class Assets {

@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:wallet/domain/account/entities/address.dart';
-import 'dart:math';
 import 'package:hive/hive.dart';
 
 part 'account.g.dart';
@@ -22,7 +21,6 @@ class Account with EquatableMixin {
 
   // We don't store seedPhrase in hive, but separately in secure storage
   late final String? seedPhrase;
-  // final bool isEmpty; // TODO: remove this field in the future
 
   String get address => fuelAddress.bech32Address;
 

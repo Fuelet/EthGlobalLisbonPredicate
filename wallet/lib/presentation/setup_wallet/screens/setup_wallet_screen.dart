@@ -84,15 +84,6 @@ class SetupWalletScreen extends StatelessWidget {
               ),
             ),
           ),
-          // Padding(
-          //   padding: const EdgeInsets.symmetric(horizontal: 16),
-          //   child: FLTMonocoloredPrimaryButton(
-          //     onPressed: () {},
-          //     size: ButtonSize.large,
-          //     text: "Create a new wallet",
-          //     prefixIcon: SvgPicture.asset(Assets.icons.add),
-          //   ),
-          // ),
           const SizedBox(height: 12),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),

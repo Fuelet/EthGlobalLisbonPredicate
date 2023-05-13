@@ -25,7 +25,7 @@ class SeedPhraseColumn extends StatelessWidget {
                 child: Text(
                   '${i + startCountingFrom}.',
                   style: FLTTypography.header6w500.copyWith(
-                    color: const Color(0xff575760), // TODO: hardcoded value
+                    color: const Color(0xff575760),
                     height: 32 / 19,
                   ),
                 ),
