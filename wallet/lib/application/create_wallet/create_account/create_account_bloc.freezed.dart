@@ -610,8 +610,6 @@ abstract class _$$_CreationFailedCopyWith<$Res> {
       __$$_CreationFailedCopyWithImpl<$Res>;
   @useResult
   $Res call({WalletCreateFailure failure});
-
-  $WalletCreateFailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
@@ -625,22 +623,14 @@ class __$$_CreationFailedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? failure = null,
+    Object? failure = freezed,
   }) {
     return _then(_$_CreationFailed(
-      null == failure
+      freezed == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
               as WalletCreateFailure,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $WalletCreateFailureCopyWith<$Res> get failure {
-    return $WalletCreateFailureCopyWith<$Res>(_value.failure, (value) {
-      return _then(_value.copyWith(failure: value));
-    });
   }
 }
 
@@ -662,11 +652,12 @@ class _$_CreationFailed implements _CreationFailed {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CreationFailed &&
-            (identical(other.failure, failure) || other.failure == failure));
+            const DeepCollectionEquality().equals(other.failure, failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, failure);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(failure));
 
   @JsonKey(ignore: true)
   @override
