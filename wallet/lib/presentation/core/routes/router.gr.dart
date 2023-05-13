@@ -11,44 +11,48 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i7;
-import 'package:flutter/material.dart' as _i8;
-import 'package:wallet/presentation/airdrop/screens/airdrop_screen.dart' as _i6;
+import 'package:auto_route/auto_route.dart' as _i8;
+import 'package:flutter/material.dart' as _i9;
+import 'package:wallet/presentation/airdrop/screens/airdrop_screen.dart'
+    as _i6;
 import 'package:wallet/presentation/home/screens/home.dart' as _i3;
-import 'package:wallet/presentation/receive/screens/receive.dart' as _i5;
+import 'package:wallet/presentation/receive/screens/receive.dart'
+    as _i5;
+import 'package:wallet/presentation/scan/scan_screen.dart' as _i7;
 import 'package:wallet/presentation/setup_wallet/screens/seed_phrase_screen.dart'
     as _i4;
 import 'package:wallet/presentation/setup_wallet/screens/setup_wallet_screen.dart'
     as _i2;
-import 'package:wallet/presentation/splash/screens/splash_screen.dart' as _i1;
+import 'package:wallet/presentation/splash/screens/splash_screen.dart'
+    as _i1;
 
-class AppRouter extends _i7.RootStackRouter {
-  AppRouter([_i8.GlobalKey<_i8.NavigatorState>? navigatorKey])
+class AppRouter extends _i8.RootStackRouter {
+  AppRouter([_i9.GlobalKey<_i9.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i7.PageFactory> pagesMap = {
+  final Map<String, _i8.PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
-      return _i7.AdaptivePage<dynamic>(
+      return _i8.AdaptivePage<dynamic>(
         routeData: routeData,
         child: const _i1.SplashScreen(),
       );
     },
     SetupWalletRoute.name: (routeData) {
-      return _i7.AdaptivePage<dynamic>(
+      return _i8.AdaptivePage<dynamic>(
         routeData: routeData,
         child: const _i2.SetupWalletScreen(),
       );
     },
     HomeRoute.name: (routeData) {
-      return _i7.AdaptivePage<dynamic>(
+      return _i8.AdaptivePage<dynamic>(
         routeData: routeData,
         child: const _i3.HomeScreen(),
       );
     },
     SeedPhraseRoute.name: (routeData) {
       final args = routeData.argsAs<SeedPhraseRouteArgs>();
-      return _i7.AdaptivePage<dynamic>(
+      return _i8.AdaptivePage<dynamic>(
         routeData: routeData,
         child: _i4.SeedPhraseScreen(
           key: args.key,
@@ -57,14 +61,14 @@ class AppRouter extends _i7.RootStackRouter {
       );
     },
     ReceiveRoute.name: (routeData) {
-      return _i7.AdaptivePage<dynamic>(
+      return _i8.AdaptivePage<dynamic>(
         routeData: routeData,
         child: const _i5.ReceiveScreen(),
       );
     },
     AirdropRoute.name: (routeData) {
       final args = routeData.argsAs<AirdropRouteArgs>();
-      return _i7.AdaptivePage<dynamic>(
+      return _i8.AdaptivePage<dynamic>(
         routeData: routeData,
         child: _i6.AirdropScreen(
           key: args.key,
@@ -72,40 +76,55 @@ class AppRouter extends _i7.RootStackRouter {
         ),
       );
     },
+    ScanQrRoute.name: (routeData) {
+      final args = routeData.argsAs<ScanQrRouteArgs>(
+          orElse: () => const ScanQrRouteArgs());
+      return _i8.AdaptivePage<dynamic>(
+        routeData: routeData,
+        child: _i7.ScanQrScreen(
+          isForAddress: args.isForAddress,
+          key: args.key,
+        ),
+      );
+    },
   };
 
   @override
-  List<_i7.RouteConfig> get routes => [
-        _i7.RouteConfig(
+  List<_i8.RouteConfig> get routes => [
+        _i8.RouteConfig(
           SplashRoute.name,
           path: '/',
         ),
-        _i7.RouteConfig(
+        _i8.RouteConfig(
           SetupWalletRoute.name,
           path: '/setup-wallet-screen',
         ),
-        _i7.RouteConfig(
+        _i8.RouteConfig(
           HomeRoute.name,
           path: '/home-screen',
         ),
-        _i7.RouteConfig(
+        _i8.RouteConfig(
           SeedPhraseRoute.name,
           path: '/seed-phrase-screen',
         ),
-        _i7.RouteConfig(
+        _i8.RouteConfig(
           ReceiveRoute.name,
           path: '/receive-screen',
         ),
-        _i7.RouteConfig(
+        _i8.RouteConfig(
           AirdropRoute.name,
           path: '/airdrop-screen',
+        ),
+        _i8.RouteConfig(
+          ScanQrRoute.name,
+          path: '/scan-qr-screen',
         ),
       ];
 }
 
 /// generated route for
 /// [_i1.SplashScreen]
-class SplashRoute extends _i7.PageRouteInfo<void> {
+class SplashRoute extends _i8.PageRouteInfo<void> {
   const SplashRoute()
       : super(
           SplashRoute.name,
@@ -117,7 +136,7 @@ class SplashRoute extends _i7.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.SetupWalletScreen]
-class SetupWalletRoute extends _i7.PageRouteInfo<void> {
+class SetupWalletRoute extends _i8.PageRouteInfo<void> {
   const SetupWalletRoute()
       : super(
           SetupWalletRoute.name,
@@ -129,7 +148,7 @@ class SetupWalletRoute extends _i7.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.HomeScreen]
-class HomeRoute extends _i7.PageRouteInfo<void> {
+class HomeRoute extends _i8.PageRouteInfo<void> {
   const HomeRoute()
       : super(
           HomeRoute.name,
@@ -141,10 +160,10 @@ class HomeRoute extends _i7.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.SeedPhraseScreen]
-class SeedPhraseRoute extends _i7.PageRouteInfo<SeedPhraseRouteArgs> {
+class SeedPhraseRoute extends _i8.PageRouteInfo<SeedPhraseRouteArgs> {
   SeedPhraseRoute({
-    _i8.Key? key,
-    required _i8.BuildContext blocContext,
+    _i9.Key? key,
+    required _i9.BuildContext blocContext,
   }) : super(
           SeedPhraseRoute.name,
           path: '/seed-phrase-screen',
@@ -163,9 +182,9 @@ class SeedPhraseRouteArgs {
     required this.blocContext,
   });
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
-  final _i8.BuildContext blocContext;
+  final _i9.BuildContext blocContext;
 
   @override
   String toString() {
@@ -175,7 +194,7 @@ class SeedPhraseRouteArgs {
 
 /// generated route for
 /// [_i5.ReceiveScreen]
-class ReceiveRoute extends _i7.PageRouteInfo<void> {
+class ReceiveRoute extends _i8.PageRouteInfo<void> {
   const ReceiveRoute()
       : super(
           ReceiveRoute.name,
@@ -187,9 +206,9 @@ class ReceiveRoute extends _i7.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.AirdropScreen]
-class AirdropRoute extends _i7.PageRouteInfo<AirdropRouteArgs> {
+class AirdropRoute extends _i8.PageRouteInfo<AirdropRouteArgs> {
   AirdropRoute({
-    _i8.Key? key,
+    _i9.Key? key,
     required String address,
   }) : super(
           AirdropRoute.name,
@@ -209,12 +228,46 @@ class AirdropRouteArgs {
     required this.address,
   });
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
   final String address;
 
   @override
   String toString() {
     return 'AirdropRouteArgs{key: $key, address: $address}';
+  }
+}
+
+/// generated route for
+/// [_i7.ScanQrScreen]
+class ScanQrRoute extends _i8.PageRouteInfo<ScanQrRouteArgs> {
+  ScanQrRoute({
+    bool isForAddress = false,
+    _i9.Key? key,
+  }) : super(
+          ScanQrRoute.name,
+          path: '/scan-qr-screen',
+          args: ScanQrRouteArgs(
+            isForAddress: isForAddress,
+            key: key,
+          ),
+        );
+
+  static const String name = 'ScanQrRoute';
+}
+
+class ScanQrRouteArgs {
+  const ScanQrRouteArgs({
+    this.isForAddress = false,
+    this.key,
+  });
+
+  final bool isForAddress;
+
+  final _i9.Key? key;
+
+  @override
+  String toString() {
+    return 'ScanQrRouteArgs{isForAddress: $isForAddress, key: $key}';
   }
 }

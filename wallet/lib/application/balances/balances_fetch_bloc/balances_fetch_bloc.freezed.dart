@@ -576,10 +576,10 @@ class __$$FetchedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? balanceData = freezed,
+    Object? balanceData = null,
   }) {
     return _then(_$Fetched(
-      freezed == balanceData
+      null == balanceData
           ? _value.balanceData
           : balanceData // ignore: cast_nullable_to_non_nullable
               as FetchedBalanceData,
@@ -605,13 +605,12 @@ class _$Fetched implements Fetched {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Fetched &&
-            const DeepCollectionEquality()
-                .equals(other.balanceData, balanceData));
+            (identical(other.balanceData, balanceData) ||
+                other.balanceData == balanceData));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(balanceData));
+  int get hashCode => Object.hash(runtimeType, balanceData);
 
   @JsonKey(ignore: true)
   @override

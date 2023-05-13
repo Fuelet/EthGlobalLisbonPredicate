@@ -30,6 +30,21 @@ class TransactionActions extends StatelessWidget {
     );
   }
 
+  Future<void> _handleScan(BuildContext context) async {
+    print("Gonna scan");
+    final value = await context.router.push<String?>(
+      ScanQrRoute(isForAddress: true),
+    );
+
+    if (value == null) {
+      return;
+    }
+
+    context.router.push(
+      const ReceiveRoute(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // final balancesState = context.read<BalancesBloc>().state;
@@ -39,7 +54,7 @@ class TransactionActions extends StatelessWidget {
       children: [
         Expanded(
           child: FLTMonocoloredPrimaryButton(
-            onPressed: () {},
+            onPressed: () => _handleScan(context),
             // onPressed: () => DemoModeUtils.checkAndDo(
             //   accounts: context.read<AccountsBloc>().state.accounts,
             //   context: context,
@@ -94,31 +109,7 @@ class TransactionActions extends StatelessWidget {
         Expanded(
           child: FLTMonocoloredSecondaryButton(
             size: ButtonSize.xsmall,
-            onPressed: () {
-              // DemoModeUtils.checkAndDo(
-              //   accounts: context.read<AccountsBloc>().state.accounts,
-              //   context: context,
-              //   callback: () {
-              //     if (assetId == null) {
-              //       /// From [HomeScreen]
-              //       SelectTokenBottomSheet.show(
-              //         context,
-              //         useAllTokens: true,
-              //         onSelectTokenBalance: (tokenBalance) {
-              //           ReceiveBottomSheet.show(context, tokenBalance);
-              //         },
-              //       );
-              //     } else {
-              //       /// From [CoinScreen]
-              //       ReceiveBottomSheet.show(
-              //         context,
-              //         balancesState.balances
-              //             .firstWhere((e) => e.asset == assetId),
-              //       );
-              //     }
-              //   },
-              // );
-            },
+            onPressed: () {},
             text: "Scan QR",
             prefixIcon: SvgPicture.asset(Assets.icons.scan),
           ),

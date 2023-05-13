@@ -35,6 +35,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ethereum_dark.svg
   String get ethereumDark => 'assets/icons/ethereum_dark.svg';
 
+  /// File path: assets/icons/fuel_dark.svg
+  String get fuelDark => 'assets/icons/fuel_dark.svg';
+
   /// File path: assets/icons/import.svg
   String get import => 'assets/icons/import.svg';
 
@@ -59,6 +62,7 @@ class $AssetsIconsGen {
         copy,
         done,
         ethereumDark,
+        fuelDark,
         import,
         info,
         more,

@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:wallet/domain/balances/entities/fetched_balance_data.dart';
 import 'package:wallet/domain/balances/i_balances_repository.dart';
 import 'package:wallet/infrastructure/accounts/selected_account_manager.dart';
 import 'package:injectable/injectable.dart';
