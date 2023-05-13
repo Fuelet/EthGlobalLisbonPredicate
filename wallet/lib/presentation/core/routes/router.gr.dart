@@ -13,6 +13,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i10;
 import 'package:flutter/material.dart' as _i11;
+import 'package:flutter_fuels/flutter_fuels.dart' as _i14;
+import 'package:wallet/domain/account/entities/account.dart' as _i13;
 import 'package:wallet/domain/balances/entities/balance.dart' as _i12;
 import 'package:wallet/presentation/airdrop/screens/airdrop_screen.dart' as _i6;
 import 'package:wallet/presentation/home/screens/home.dart' as _i3;
@@ -96,6 +98,7 @@ class AppRouter extends _i10.RootStackRouter {
         child: _i8.SendCoinScreen(
           key: args.key,
           tokenBalance: args.tokenBalance,
+          account: args.account,
         ),
       );
     },
@@ -106,6 +109,7 @@ class AppRouter extends _i10.RootStackRouter {
         child: _i9.SendByQRScreen(
           amount: args.amount,
           senderAddress: args.senderAddress,
+          secretWallet: args.secretWallet,
           key: args.key,
         ),
       );
@@ -309,12 +313,14 @@ class SendCoinRoute extends _i10.PageRouteInfo<SendCoinRouteArgs> {
   SendCoinRoute({
     _i11.Key? key,
     required _i12.TokenBalance tokenBalance,
+    required _i13.Account account,
   }) : super(
           SendCoinRoute.name,
           path: '/send-coin-screen',
           args: SendCoinRouteArgs(
             key: key,
             tokenBalance: tokenBalance,
+            account: account,
           ),
         );
 
@@ -325,15 +331,18 @@ class SendCoinRouteArgs {
   const SendCoinRouteArgs({
     this.key,
     required this.tokenBalance,
+    required this.account,
   });
 
   final _i11.Key? key;
 
   final _i12.TokenBalance tokenBalance;
 
+  final _i13.Account account;
+
   @override
   String toString() {
-    return 'SendCoinRouteArgs{key: $key, tokenBalance: $tokenBalance}';
+    return 'SendCoinRouteArgs{key: $key, tokenBalance: $tokenBalance, account: $account}';
   }
 }
 
@@ -343,6 +352,7 @@ class SendByQRRoute extends _i10.PageRouteInfo<SendByQRRouteArgs> {
   SendByQRRoute({
     required double amount,
     required String senderAddress,
+    required _i14.FuelWallet secretWallet,
     _i11.Key? key,
   }) : super(
           SendByQRRoute.name,
@@ -350,6 +360,7 @@ class SendByQRRoute extends _i10.PageRouteInfo<SendByQRRouteArgs> {
           args: SendByQRRouteArgs(
             amount: amount,
             senderAddress: senderAddress,
+            secretWallet: secretWallet,
             key: key,
           ),
         );
@@ -361,6 +372,7 @@ class SendByQRRouteArgs {
   const SendByQRRouteArgs({
     required this.amount,
     required this.senderAddress,
+    required this.secretWallet,
     this.key,
   });
 
@@ -368,10 +380,12 @@ class SendByQRRouteArgs {
 
   final String senderAddress;
 
+  final _i14.FuelWallet secretWallet;
+
   final _i11.Key? key;
 
   @override
   String toString() {
-    return 'SendByQRRouteArgs{amount: $amount, senderAddress: $senderAddress, key: $key}';
+    return 'SendByQRRouteArgs{amount: $amount, senderAddress: $senderAddress, secretWallet: $secretWallet, key: $key}';
   }
 }

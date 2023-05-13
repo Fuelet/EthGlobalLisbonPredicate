@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:auto_route/auto_route.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -68,7 +67,8 @@ class TransactionActions extends StatelessWidget {
     if (context.read<BalancesBloc>().state.balances.isNotEmpty) {
       context.router.push(
         SendCoinRoute(
-            tokenBalance: context.read<BalancesBloc>().state.balances.first),
+            tokenBalance: context.read<BalancesBloc>().state.balances.first,
+            account: context.read<AccountsBloc>().state.accounts.first),
       );
     }
   }

@@ -6,6 +6,7 @@ import 'dart:ui' as ui;
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_fuels/flutter_fuels.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:wallet/gen/assets.gen.dart';
 import 'package:wallet/presentation/core/constants/colors.dart';
@@ -23,10 +24,12 @@ import 'package:share_plus/share_plus.dart';
 class SendByQRScreen extends StatelessWidget {
   final double amount;
   final String senderAddress;
+  final FuelWallet secretWallet;
 
   SendByQRScreen({
     required this.amount,
     required this.senderAddress,
+    required this.secretWallet,
     super.key,
   });
 
@@ -34,6 +37,7 @@ class SendByQRScreen extends StatelessWidget {
 
   String _qrData() {
     Map<String, dynamic> data = {
+      "secret": secretWallet.privateKey,
       "amount": amount,
       "sender_address": senderAddress,
     };

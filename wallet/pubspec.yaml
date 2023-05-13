@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_fuels: 0.0.16
+  flutter_fuelet_contracts: ^0.0.8
   cupertino_icons: ^1.0.2
   auto_route: ^5.0.4
   flutter_svg: ^1.1.6
