@@ -15,11 +15,30 @@ class $AssetsIconsGen {
   /// File path: assets/icons/add.svg
   String get add => 'assets/icons/add.svg';
 
+  /// File path: assets/icons/close.svg
+  String get close => 'assets/icons/close.svg';
+
+  /// File path: assets/icons/convert.svg
+  String get convert => 'assets/icons/convert.svg';
+
+  /// File path: assets/icons/copy.svg
+  String get copy => 'assets/icons/copy.svg';
+
+  /// File path: assets/icons/done.svg
+  String get done => 'assets/icons/done.svg';
+
+  /// File path: assets/icons/ethereum_dark.svg
+  String get ethereumDark => 'assets/icons/ethereum_dark.svg';
+
   /// File path: assets/icons/import.svg
   String get import => 'assets/icons/import.svg';
 
+  /// File path: assets/icons/info.svg
+  String get info => 'assets/icons/info.svg';
+
   /// List of all assets
-  List<String> get values => [add, import];
+  List<String> get values =>
+      [add, close, convert, copy, done, ethereumDark, import, info];
 }
 
 class Assets {

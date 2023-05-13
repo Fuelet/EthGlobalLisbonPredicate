@@ -1,4 +1,4 @@
-package com.example.fuel_hackathon
+package com.example.wallet
 
 import io.flutter.embedding.android.FlutterActivity
 

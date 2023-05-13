@@ -21,6 +21,7 @@ import '../application/accounts/accounts_bloc.dart' as _i18;
 import '../application/create_wallet/create_account/create_account_bloc.dart'
     as _i13;
 import '../application/create_wallet/seed_phrase/seed_phrase_bloc.dart' as _i9;
+import '../application/receive/bloc/receive_bloc.dart' as _i22;
 import '../core/fuel_wallet_address_convertor.dart' as _i5;
 import '../domain/account/entities/i_accounts_local_repository.dart' as _i14;
 import '../domain/wallet_create/i_wallet_create_repository.dart' as _i6;
@@ -29,7 +30,7 @@ import '../infrastructure/accounts/private_key_manager.dart' as _i8;
 import '../infrastructure/accounts/seed_phrase_manager.dart' as _i10;
 import '../infrastructure/accounts/selected_account_credentials.dart' as _i19;
 import '../infrastructure/accounts/selected_account_manager.dart' as _i17;
-import '../infrastructure/core/app_injectable_module.dart' as _i22;
+import '../infrastructure/core/app_injectable_module.dart' as _i23;
 import '../infrastructure/core/managers/shared_prefs/raw_manager.dart' as _i12;
 import '../infrastructure/core/managers/shared_prefs/shared_prefs_manager.dart'
     as _i16;
@@ -102,7 +103,9 @@ Future<_i1.GetIt> $initGetIt(
         gh<_i19.SelectedAccountCredentials>(),
         gh<_i5.FuelWalletAddressConvertor>(),
       ));
+  gh.factory<_i22.ReceiveBloc>(
+      () => _i22.ReceiveBloc(gh<_i20.WalletUnlockedHelper>()));
   return getIt;
 }
 
-class _$AppInjectableModule extends _i22.AppInjectableModule {}
+class _$AppInjectableModule extends _i23.AppInjectableModule {}

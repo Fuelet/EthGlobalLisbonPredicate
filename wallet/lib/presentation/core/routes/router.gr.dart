@@ -11,28 +11,29 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i3;
-import 'package:flutter/material.dart' as _i4;
+import 'package:auto_route/auto_route.dart' as _i4;
+import 'package:flutter/material.dart' as _i5;
+import 'package:wallet/presentation/receive/screens/receive.dart' as _i3;
 import 'package:wallet/presentation/setup_wallet/screens/seed_phrase_screen.dart'
     as _i2;
 import 'package:wallet/presentation/setup_wallet/screens/setup_wallet_screen.dart'
     as _i1;
 
-class AppRouter extends _i3.RootStackRouter {
-  AppRouter([_i4.GlobalKey<_i4.NavigatorState>? navigatorKey])
+class AppRouter extends _i4.RootStackRouter {
+  AppRouter([_i5.GlobalKey<_i5.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i3.PageFactory> pagesMap = {
+  final Map<String, _i4.PageFactory> pagesMap = {
     SetupWalletRoute.name: (routeData) {
-      return _i3.AdaptivePage<dynamic>(
+      return _i4.AdaptivePage<dynamic>(
         routeData: routeData,
         child: const _i1.SetupWalletScreen(),
       );
     },
     SeedPhraseRoute.name: (routeData) {
       final args = routeData.argsAs<SeedPhraseRouteArgs>();
-      return _i3.AdaptivePage<dynamic>(
+      return _i4.AdaptivePage<dynamic>(
         routeData: routeData,
         child: _i2.SeedPhraseScreen(
           key: args.key,
@@ -40,24 +41,34 @@ class AppRouter extends _i3.RootStackRouter {
         ),
       );
     },
+    ReceiveRoute.name: (routeData) {
+      return _i4.AdaptivePage<dynamic>(
+        routeData: routeData,
+        child: const _i3.ReceiveScreen(),
+      );
+    },
   };
 
   @override
-  List<_i3.RouteConfig> get routes => [
-        _i3.RouteConfig(
+  List<_i4.RouteConfig> get routes => [
+        _i4.RouteConfig(
           SetupWalletRoute.name,
           path: '/',
         ),
-        _i3.RouteConfig(
+        _i4.RouteConfig(
           SeedPhraseRoute.name,
           path: '/seed-phrase-screen',
+        ),
+        _i4.RouteConfig(
+          ReceiveRoute.name,
+          path: '/receive-screen',
         ),
       ];
 }
 
 /// generated route for
 /// [_i1.SetupWalletScreen]
-class SetupWalletRoute extends _i3.PageRouteInfo<void> {
+class SetupWalletRoute extends _i4.PageRouteInfo<void> {
   const SetupWalletRoute()
       : super(
           SetupWalletRoute.name,
@@ -69,10 +80,10 @@ class SetupWalletRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.SeedPhraseScreen]
-class SeedPhraseRoute extends _i3.PageRouteInfo<SeedPhraseRouteArgs> {
+class SeedPhraseRoute extends _i4.PageRouteInfo<SeedPhraseRouteArgs> {
   SeedPhraseRoute({
-    _i4.Key? key,
-    required _i4.BuildContext blocContext,
+    _i5.Key? key,
+    required _i5.BuildContext blocContext,
   }) : super(
           SeedPhraseRoute.name,
           path: '/seed-phrase-screen',
@@ -91,12 +102,24 @@ class SeedPhraseRouteArgs {
     required this.blocContext,
   });
 
-  final _i4.Key? key;
+  final _i5.Key? key;
 
-  final _i4.BuildContext blocContext;
+  final _i5.BuildContext blocContext;
 
   @override
   String toString() {
     return 'SeedPhraseRouteArgs{key: $key, blocContext: $blocContext}';
   }
+}
+
+/// generated route for
+/// [_i3.ReceiveScreen]
+class ReceiveRoute extends _i4.PageRouteInfo<void> {
+  const ReceiveRoute()
+      : super(
+          ReceiveRoute.name,
+          path: '/receive-screen',
+        );
+
+  static const String name = 'ReceiveRoute';
 }
