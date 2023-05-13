@@ -3,8 +3,8 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:wallet/domain/balances/entities/balance.dart';
-import 'package:wallet/domain/transactions%20copy/entities/page_info.dart';
-import 'package:wallet/domain/transactions%20copy/entities/token.dart';
+import 'package:wallet/domain/transactions/entities/page_info.dart';
+import 'package:wallet/domain/transactions/entities/token.dart';
 import 'package:wallet/infrastructure/accounts/selected_account_manager.dart';
 
 import 'package:injectable/injectable.dart';

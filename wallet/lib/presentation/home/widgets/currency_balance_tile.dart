@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:wallet/domain/balances/entities/balance.dart';
 import 'package:wallet/gen/assets.gen.dart';
 import 'package:wallet/presentation/core/constants/typography.dart';
+import 'package:wallet/presentation/core/extensions/balance_x.dart';
 import 'package:wallet/presentation/core/widgets/list_tile.dart';
 
 class CurrencyBalanceTile extends StatelessWidget {
-  // final TokenBalance tokenBalance;
+  final TokenBalance tokenBalance;
   final VoidCallback? onTap;
 
   const CurrencyBalanceTile({
     super.key,
-    // required this.tokenBalance,
+    required this.tokenBalance,
     this.onTap,
   });
 
@@ -34,12 +34,12 @@ class CurrencyBalanceTile extends StatelessWidget {
           color: const Color(0xfff5f5f5),
         ),
       ),
-      // subtitle: Text(
-      //   '${tokenBalance.displayAmount} ${tokenBalance.symbol}',
-      //   style: NFTTypography.body3SemiBold.copyWith(
-      //     color: const Color(0xff6d6d6d),
-      //   ),
-      // ),
+      subtitle: Text(
+        '${tokenBalance.displayAmount} ${tokenBalance.symbol}',
+        style: FLTTypography.body3SemiBold.copyWith(
+          color: const Color(0xff6d6d6d),
+        ),
+      ),
       // detailTitle: BlocBuilder<CoinsPricesBloc, CoinsPricesState>(
       //   builder: (context, state) {
       //     return Text(

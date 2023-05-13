@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wallet/application/accounts/account_select/account_select_bloc.dart';
 import 'package:wallet/application/accounts/accounts_bloc.dart';
+import 'package:wallet/application/balances/balances_bloc/balances_bloc.dart';
+import 'package:wallet/application/balances/balances_fetch_bloc/balances_fetch_bloc.dart';
 import 'package:wallet/di/locator.dart';
 import 'package:wallet/presentation/core/constants/colors.dart';
 import 'package:wallet/presentation/core/routes/router.gr.dart';
@@ -25,6 +27,14 @@ class FuelWalletApp extends StatelessWidget {
         ),
         BlocProvider<AccountSelectBloc>(
           create: (context) => locator.accountSelectBloc,
+        ),
+        BlocProvider<BalancesFetchBloc>(
+          lazy: false,
+          create: (_) => locator.balancesFetchBloc,
+        ),
+        BlocProvider<BalancesBloc>(
+          lazy: false,
+          create: (_) => locator.balancesBloc,
         ),
       ],
       child: OverlaySupport.global(

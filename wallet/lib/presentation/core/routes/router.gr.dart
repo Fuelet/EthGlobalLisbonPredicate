@@ -13,18 +13,15 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i8;
 import 'package:flutter/material.dart' as _i9;
-import 'package:wallet/presentation/airdrop/screens/airdrop_screen.dart'
-    as _i6;
+import 'package:wallet/presentation/airdrop/screens/airdrop_screen.dart' as _i6;
 import 'package:wallet/presentation/home/screens/home.dart' as _i3;
-import 'package:wallet/presentation/receive/screens/receive.dart'
-    as _i5;
+import 'package:wallet/presentation/receive/screens/receive.dart' as _i5;
 import 'package:wallet/presentation/scan/scan_screen.dart' as _i7;
 import 'package:wallet/presentation/setup_wallet/screens/seed_phrase_screen.dart'
     as _i4;
 import 'package:wallet/presentation/setup_wallet/screens/setup_wallet_screen.dart'
     as _i2;
-import 'package:wallet/presentation/splash/screens/splash_screen.dart'
-    as _i1;
+import 'package:wallet/presentation/splash/screens/splash_screen.dart' as _i1;
 
 class AppRouter extends _i8.RootStackRouter {
   AppRouter([_i9.GlobalKey<_i9.NavigatorState>? navigatorKey])

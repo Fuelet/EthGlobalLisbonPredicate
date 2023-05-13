@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:wallet/application/balances/balances_fetch_bloc/balances_fetch_bloc.dart';
 import 'package:wallet/domain/blockchain_network/blockchain_network.dart';
 import 'package:wallet/gen/assets.gen.dart';
 import 'package:wallet/presentation/core/widgets/app_bar.dart';
@@ -51,9 +53,9 @@ class _AirdropScreenState extends State<AirdropScreen> {
               padding: const EdgeInsets.only(right: 16.0),
               child: FLTIconButton(
                 onTap: () {
-                  // context
-                  //     .read<BalancesFetchBloc>()
-                  //     .add(const BalancesFetchEvent.fetchBalances());
+                  context
+                      .read<BalancesFetchBloc>()
+                      .add(const BalancesFetchEvent.fetchBalances());
 
                   // TODO: uncomment after implement [TransactionsFetchBloc]
                   // context.read<TransactionsFetchBloc>().add(

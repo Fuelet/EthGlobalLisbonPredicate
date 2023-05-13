@@ -29,11 +29,6 @@ class BalancesFetchBloc extends Bloc<BalancesFetchEvent, BalancesFetchState> {
 
     final fetchedBalancesData = await _balancesRepository.getBalances();
 
-    if (address != _selectedAccountManager.selectedAddress) {
-      // Here we handle the case, when the user changes the account before previous account balances fetched
-      return;
-    }
-
     emit(BalancesFetchState.fetched(fetchedBalancesData));
   }
 

@@ -1,5 +1,5 @@
-import 'package:wallet/domain/transactions%20copy/entities/page_info.dart';
-import 'package:wallet/domain/transactions%20copy/entities/transaction.dart';
+import 'package:wallet/domain/transactions/entities/page_info.dart';
+import 'package:wallet/domain/transactions/entities/transaction.dart';
 
 class FuelTransactionsResponse {
   final PageInfo pageInfo;

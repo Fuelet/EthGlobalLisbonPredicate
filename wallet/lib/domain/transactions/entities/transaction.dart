@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wallet/domain/transactions%20copy/entities/token.dart';
+import 'package:wallet/domain/transactions/entities/token.dart';
 import 'package:wallet/presentation/core/constants/colors.dart';
 
 enum TransactionType {
