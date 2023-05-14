@@ -7,6 +7,7 @@ import 'package:wallet/di/locator.dart';
 import 'package:wallet/gen/assets.gen.dart';
 import 'package:wallet/presentation/core/constants/colors.dart';
 import 'package:wallet/presentation/core/constants/typography.dart';
+import 'package:wallet/presentation/core/widgets/buttons/button_size.dart';
 import 'package:wallet/presentation/core/widgets/buttons/primary_button.dart';
 import 'package:wallet/presentation/core/widgets/icon_button.dart';
 import 'package:wallet/presentation/core/widgets/scaffold.dart';
@@ -69,28 +70,29 @@ class ReceiveScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  '0.5 ETH',
+                  '$amount ETH',
                   style: FLTTypography.header2SemiBold.copyWith(
                     color: Colors.white,
                   ),
                 ),
                 const SizedBox(height: 16),
 
-                //TODO: account tile
-                Container(
-                  height: 50,
-                  width: double.infinity,
-                  color: Colors.green,
-                ),
+                // //TODO: account tile
+                // Container(
+                //   height: 50,
+                //   width: double.infinity,
+                //   color: Colors.green,
+                // ),
                 const SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: ProcessingTransactionDetails(
-                    receiverAddress: 'your wallet',
+                    receiverAddress: senderAddress,
                     status: state.toTransactionStatus(),
                     coinAmount: amount,
                   ),
                 ),
+                const Spacer(),
                 state.maybeMap(
                   orElse: () => const SizedBox(),
                   successfullyReceived: (value) => ViewTransactionTextButton(
@@ -98,30 +100,57 @@ class ReceiveScreen extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: state.maybeMap(
-                    orElse: () => FLTMonocoloredPrimaryButton(
-                      onPressed: () => _handleClose(context),
-                      text: 'Close',
-                    ),
-                    inProcess: (_) => const SizedBox(),
-                    initial: (_) => Expanded(
-                      child: FLTMonocoloredPrimaryButton(
-                        onPressed: () {
-                          context.read<ReceiveBloc>().add(
-                                ReceiveEvent.receive(
-                                  amount: amount,
-                                  secret: secret
-                                ),
-                              );
-                        },
-                        text: 'Receive',
-                      ),
-                    ),
+
+
+
+
+                state.maybeMap(
+                  orElse: () => FLTMonocoloredPrimaryButton(
+                    onPressed: () => _handleClose(context),
+                    text: 'Close',
                   ),
+                  // inProcess: (_) => const SizedBox(),
+                  initial: (_) => FLTMonocoloredPrimaryButton(
+                      // size: ButtonSize.small,
+                      onPressed: () {
+                        context.read<ReceiveBloc>().add(
+                          ReceiveEvent.receive(
+                              amount: amount,
+                              secret: secret
+                          ),
+                        );
+                      },
+                      text: 'Receive',
+                    ),
                 ),
-                const SizedBox(height: 50),
+
+
+
+
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 16),
+                //   child: state.maybeMap(
+                //     orElse: () => FLTMonocoloredPrimaryButton(
+                //       onPressed: () => _handleClose(context),
+                //       text: 'Close',
+                //     ),
+                //     // inProcess: (_) => const SizedBox(),
+                //     initial: (_) => Expanded(
+                //       child: FLTMonocoloredPrimaryButton(
+                //         onPressed: () {
+                //           context.read<ReceiveBloc>().add(
+                //                 ReceiveEvent.receive(
+                //                   amount: amount,
+                //                   secret: secret
+                //                 ),
+                //               );
+                //         },
+                //         text: 'Receive',
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                // const SizedBox(height: 50),
               ],
             ),
           );

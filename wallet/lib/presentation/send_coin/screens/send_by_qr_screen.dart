@@ -20,16 +20,19 @@ import 'package:wallet/presentation/core/widgets/scaffold.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:wallet/presentation/receive/widgets/view_transaction_text_button.dart';
 
 class SendByQRScreen extends StatelessWidget {
   final double amount;
   final String senderAddress;
   final FuelWallet secretWallet;
+  final String txId;
 
   SendByQRScreen({
     required this.amount,
     required this.senderAddress,
     required this.secretWallet,
+    required this.txId,
     super.key,
   });
 
@@ -150,6 +153,9 @@ class SendByQRScreen extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+          ViewTransactionTextButton(
+            transactionUrl: '0x$txId',
           )
         ],
       ),

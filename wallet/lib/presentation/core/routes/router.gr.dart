@@ -116,6 +116,7 @@ class AppRouter extends _i10.RootStackRouter {
           amount: args.amount,
           senderAddress: args.senderAddress,
           secretWallet: args.secretWallet,
+          txId: args.txId,
           key: args.key,
         ),
       );
@@ -391,6 +392,7 @@ class SendByQRRoute extends _i10.PageRouteInfo<SendByQRRouteArgs> {
     required double amount,
     required String senderAddress,
     required _i14.FuelWallet secretWallet,
+    required String txId,
     _i11.Key? key,
   }) : super(
           SendByQRRoute.name,
@@ -399,6 +401,7 @@ class SendByQRRoute extends _i10.PageRouteInfo<SendByQRRouteArgs> {
             amount: amount,
             senderAddress: senderAddress,
             secretWallet: secretWallet,
+            txId: txId,
             key: key,
           ),
         );
@@ -411,6 +414,7 @@ class SendByQRRouteArgs {
     required this.amount,
     required this.senderAddress,
     required this.secretWallet,
+    required this.txId,
     this.key,
   });
 
@@ -420,10 +424,12 @@ class SendByQRRouteArgs {
 
   final _i14.FuelWallet secretWallet;
 
+  final String txId;
+
   final _i11.Key? key;
 
   @override
   String toString() {
-    return 'SendByQRRouteArgs{amount: $amount, senderAddress: $senderAddress, secretWallet: $secretWallet, key: $key}';
+    return 'SendByQRRouteArgs{amount: $amount, senderAddress: $senderAddress, secretWallet: $secretWallet, txId: $txId, key: $key}';
   }
 }

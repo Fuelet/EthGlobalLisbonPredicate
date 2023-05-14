@@ -41,9 +41,9 @@ class ReceiveBloc extends Bloc<ReceiveEvent, ReceiveState> {
         BlockchainNetwork.testnet.host, predicateBytecode);
     final fractionalAmount = (event.amount * 1000000000).toInt() - 10;
     final currentWallet = await _walletUnlockedHelper.getSelectedWalletUnlocked();
-    await predicate.transferTo(currentWallet.bech32Address, fractionalAmount, event.secret);
+    String txId = await predicate.transferTo(currentWallet.bech32Address, fractionalAmount, event.secret);
     await Future.delayed(const Duration(seconds: 1));
 
-    emit(const ReceiveState.successfullyReceived('Test Ts Url'));
+    emit(ReceiveState.successfullyReceived('0x$txId'));
   }
 }

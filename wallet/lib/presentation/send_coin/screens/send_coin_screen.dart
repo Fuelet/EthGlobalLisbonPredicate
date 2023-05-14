@@ -155,7 +155,7 @@ class _SendCoinScreenState extends State<SendCoinScreen> {
                     networkUrl: BlockchainNetwork.testnet.host,
                     mnemonic: widget.account.seedPhrase!);
                 String predicateB256Address = await FuelUtils.b256FromBech32String(predicateBechAddress);
-                await accountWallet.transfer(
+                String txId = await accountWallet.transfer(
                     destinationB256Address: predicateB256Address,
                     fractionalAmount: (_amountValue * 1000000000).toInt(),
                     assetId: "0x0000000000000000000000000000000000000000000000000000000000000000",
@@ -165,6 +165,7 @@ class _SendCoinScreenState extends State<SendCoinScreen> {
 
                 context.router.push(
                   SendByQRRoute(
+                    txId: txId,
                     secretWallet: secretWallet,
                     amount: _amountValue,
                     senderAddress: context

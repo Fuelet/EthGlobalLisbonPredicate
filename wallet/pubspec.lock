@@ -322,10 +322,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_fuelet_contracts
-      sha256: bf25d3bad56820eec4d1ab19a7678e6c41b42894423185b509377c34b917d6ba
+      sha256: "86f50d7480ddd492c19dc6ddbd9162317e01a172444a394585a4cd71aea432c1"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.8"
+    version: "0.0.9"
   flutter_fuels:
     dependency: "direct main"
     description:
@@ -460,10 +460,10 @@ packages:
     dependency: transitive
     description:
       name: fuelet_contracts
-      sha256: "27f030e41fd058f422ce46b1e2535393b9107d62d78c877aa00888fc68a7b3ca"
+      sha256: d92f1cec901129f7e093245ddc093d7024842dbd250bd96bd64bf36df0720d66
       url: "https://pub.dev"
     source: hosted
-    version: "1.5.2"
+    version: "1.6.0"
   fuels:
     dependency: transitive
     description:
