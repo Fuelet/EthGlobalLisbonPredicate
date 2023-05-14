@@ -49,9 +49,9 @@ class _SendCoinScreenState extends State<SendCoinScreen> {
   var _nextButtonEnabled = false;
 
   Future<String> _generatePredicateBytecode(FuelWallet wallet) async {
-    String secret = wallet.privateKey;
+    final publicKey = wallet.b256Address;
     final response = await _dio.get(
-      'http://predicatebuilderloabbalancer-12220313.us-east-1.elb.amazonaws.com:8080/predicate_bytes?secret=$secret',
+      'http://predicatebuilderloabbalancer-12220313.us-east-1.elb.amazonaws.com:8080/predicate_bytes?public_key=$publicKey',
     );
 
     var bytecode = response.data as String;
