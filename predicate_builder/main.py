@@ -13,22 +13,22 @@ def _get_predicate_template() -> str:
         return file.read()
 
 
-def _build_predicate_source(secret: str) -> str:
+def _build_predicate_source(public_key: str) -> str:
     template: str = _get_predicate_template()
-    return template.replace('${SECRET}', secret)
+    return template.replace('${SECRET_PUBLIC_KEY}', public_key)
 
 
-def _format_secret(secret: str) -> str:
+def _format_hex(secret: str) -> str:
     if secret.startswith('0x'):
         return secret
     return '0x' + secret
 
 
-def get_predicate_bytes(secret: str) -> str:
+def get_predicate_bytes(public_key: str) -> str:
     with tempfile.TemporaryDirectory() as tmp_dir_path:
         tmp_dir_name = tmp_dir_path.split('/')[-1]
         subprocess.run(["forc", "init", "--path", tmp_dir_path])
-        predicate_source: str = _build_predicate_source(_format_secret(secret))
+        predicate_source: str = _build_predicate_source(_format_hex(public_key))
         with open(f'{tmp_dir_path}/src/main.sw', 'w') as predicate_main:
             predicate_main.write(predicate_source)
 
@@ -40,8 +40,8 @@ def get_predicate_bytes(secret: str) -> str:
 
 @api.route('/predicate_bytes', methods=['GET'])
 def predicate_bytes():
-    secret = request.args.get('secret')
-    pred_bytes_hex = get_predicate_bytes(secret)
+    public_key = request.args.get('public_key')
+    pred_bytes_hex = get_predicate_bytes(public_key)
     return json.dumps(pred_bytes_hex)
 
 
